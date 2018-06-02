@@ -1,0 +1,316 @@
+
+.wrapper {
+  display: grid;
+  grid-template: repeat(4, row minmax(120px, auto)) / repeat(4, col 1fr);
+  grid-gap: 10px;
+  width: 100%;
+}
+
+#CVReport_NS_ {
+display: flex;
+justify-content: center;
+}
+
+
+.header {
+  grid-column: col 1 / span 4;
+  grid-row: row 1;
+  background-color: #1d6b34;
+}
+
+.subheader {
+  grid-column: col 1 / span 4;
+  grid-row: row 2;
+  flex-direction: column;
+  justify-content: flex-start;
+padding: 20px;
+}
+
+.sidebar {
+grid-column: col 1 / auto;
+  grid-row: row 2 / span 3;
+  z-index: 3;
+  background-color: rgba(29, 107, 52, 0.7);
+}
+
+.content {
+  display: grid;
+  grid-column: col 1 / span 4;
+  grid-row: row 3;
+  grid-gap: 10px;
+  z-index: 1;
+  padding: 5px;
+  grid-template-areas: "boxa boxa boxb boxb" "boxc boxc boxd boxd";
+}
+
+.footer {
+  grid-column: col 1 / span 4;
+  grid-row: row 4;
+  height: 120px;
+  background-color: #1d6b34;
+}
+
+.box.a {
+  grid-area: boxa;
+}
+
+.box.b {
+  grid-area: boxb;
+}
+
+.box.c {
+  grid-area: boxc;
+}
+
+.box.d {
+  grid-area: boxd;
+}
+
+
+.comp {
+  margin: 10px;
+  padding: 10px;
+}
+
+/* card opmaak */
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-5 {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+/* einde card opmaak */
+
+
+
+
+.row1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  background-color: rgba(29, 107, 52, 0);
+  color: white;
+  font-weight: bold;
+}
+
+.row2 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  /* height: 100%; */
+  background-color: white;
+}
+
+.button.prmt {
+  height: 30px;
+}
+
+.row3,
+.row4,
+.row5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 350px;
+}
+
+.row6 {
+  display: flex;
+}
+
+#PRMT_div {
+  margin: 10px;
+}
+
+.allewaarden {
+  display: none;
+}
+
+/* ------------------------------- */
+
+.mainViewerTable {
+
+visibility: hidden;
+
+}
+
+/*
+body {
+  font-family: "roboto", sans-serif;
+ width: 100%;
+  visibility: hidden;
+}
+
+*/
+
+.browser {
+  min-height: 100vh;
+  color: #050505;
+  text-align: center;
+  border: 3px solid green;
+}
+
+.spinner {
+  height: 100vh;
+  color: #fff;
+}
+
+/*---------------------------*/
+
+.ui-widget.ui-widget-content {
+  border: none;
+}
+
+.ui-widget-header {
+  border: none;
+  border-radius: 0px;
+  background: white;
+}
+
+.ui-tabs-nav .ui-state-default {
+  background: transparent;
+  border: none;
+}
+
+.ui-tabs-nav .ui-state-active a {
+  color: #459e00;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* --------------------------------------- */
+
+/* tabel styling, nodig om de witte lijnen te verwijderen  */
+.comp_tabel_kdr table {
+  display: inline-block;
+  border-spacing: 0;
+}
+
+.comp_tabel_kpl table {
+  display: inline-block;
+  border-spacing: 0;
+}
+
+.comp_tabel_kpl table tbody td span {
+  margin: 2px;
+}
+
+.comp_tabel_kdr table tbody td span {
+  margin: 2px;
+}
+
+/* ---------------------------------------------*/
+
+/* styling voor header 1 */
+.row_header1 {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  }
+
+.logo {
+  flex-grow: 1;
+  background-image: none;
+}
+.logo > img {
+  margin: 10px;
+}
+
+.title {
+  flex: 2.2;
+  color: white;
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+/* styling voor header 2 */
+
+.row_header2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 50px;
+  padding: 5px;
+}
+
+.subheader > p {
+  margin-left: 10px;
+}
+
+p {
+margin : 0px; 
+}
+
+/*------------------------------------------------*/
+
+hr {
+   border: #1d6b34;
+   height: 2px;
+   color: blue;
+   background-color: #d2d2d2;
+   margin: 2px;
+}
+
+.button.sb {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+}
+
+/*------------------------------*/
+
+.uk-navbar-container {
+height: 30px;
+align-self: flex-start;
+margin-top: 8px;
+margin-right: 5px;
+color: red;
+}
+
+
+.tussenblok {
+  /*border: 1px solid red; */
+  flex-grow: 2;
+}
+
+.uk-navbar-container:not(.uk-navbar-transparent) {
+  background-color: #1d6b34;
+}
+
+.uk-navbar-nav > li >a {
+  color: white;
+}
+
+
+#CVReport_NS_ {
+
+display: flex;
+justify-content: center;
+
+}
+
+iframe {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
