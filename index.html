@@ -13,14 +13,25 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="src/style.css">
 	<link rel="stylesheet" href="src/input.css">
-	<script type="text/javascript">
-		var $x= jQuery.noConflict();
 
-	</script>
 </head>
 
 <body>
-	
+<!-- componenten -->
+<div class="prmts prmt_jaar">**COMP1**</div>
+<div class="prmts prmt_kostendrager">**COMP2**</div>
+<div class="prmts prmt_kostenplaats">**COMP3**</div>
+<div class="comp comp_bullet_kpl">**COMP4**</div>
+<div class="comp comp_bullet_kdr">**COMP5**</div>
+<div class="comp_lijn_kdr">**COMP6**</div>
+<div class="comp_lijn_kpl">**COMP7**</div>
+<div class="comp_tabel_kpl">**COMP8**</div>
+<div class="comp_tabel_kdr">**COMP9**</div>
+<div class="comp_meerjaren_perc_kpl">**COMP10**</div>
+<div class="comp_meerjaren_abs_kpl">**COMP11**</div>
+<div class="comp_meerjaren_perc_kdr">**COMP12**</div>
+<div class="comp_meerjaren_abs_kdr">**COMP13**</div>
+<!-- Wrapper -->
 <div class="wrapper">
 	<div class="header card card-1">
 		<div class="row_header1">
@@ -28,16 +39,20 @@
 			<div class="title">OCW bedrijfsvoeringsdashboard</div>
 		</div>
 		<hr>
+		<!-- tweede gedeelte header -->
 		<div class="row_header2">
-			<!-- eerste item -->
+			<!-- Filter knop -->
 			<button class="button sb" style="background-color:#1D6B34;border: none;">
 				<span><i class="fa fa-bars fa-2x" style="color:white;"></i></span>
 				<span>Filters</span>
 			</button>
-
+			<!-- /Filter knop -->
+			
+			<!-- tussenblok verborgen -->
 			<div class="tussenblok"></div>
-			<!-- tweede item -->
-			<!--  test item -->
+			<!-- /tussenblok verborgen -->
+			
+			<!-- Navigatie bar -->
 			<nav class="uk-navbar-container" uk-navbar>
 				<div class="uk-navbar-left">
 
@@ -78,27 +93,26 @@
 
 				</div>
 			</nav>
+			<!-- /Navigatie bar -->
 
 		</div>
-
-
-
+		<!-- /tweede gedeelte header -->
 	</div>
 
 
-
+<!-- Subheader -->
 	<div class="subheader card card-1">
 		<p>Geselecteerde jaar:<span class="selectie_jaar"></span></p>
 		<p>Geselecteerde kostenplaats:<span class="selectie_kpl"></span></p>
 		<p>Geselecteerde kostendrager:<span class="selectie_kdr"></span></p>
 	</div>
+	<!-- /Subheader -->
+
+	<!-- Sidebar -->
 	<div class="sidebar card-5">
 		<div class="row1">Filters</div>
 		<div class="row2"><button class="button prmt">Ververs geselecteerde filters</button></div>
-
-
 		<div class="row">
-
 			<div class="row3">
 				<div class="group">
 					<input id="input_jaar" type="text" required>
@@ -131,78 +145,98 @@
 					<label>Name</label>
 				</div>
 			</div>
-
 		</div>
-
-
-
 	</div>
+  <!-- /Sidebar -->
+	
+	<!-- Content -->
 	<div class="content">
 		<div class="box a card card-1">
 
+    <!-- switcher Uikit -->
 			<ul uk-tab>
 				<li>
-					<a href="#">Item</a>
+					<a href="#"><i class="fa fa-line-chart"></i>BulletChart</a>
 				</li>
 				<li>
-					<a href="#">Item</a>
+					<a href="#"><i class="fa fa-line-chart"></i>Meerjaren %</a>
 				</li>
 				<li>
-					<a href="#">Item</a>
+					<a href="#"><i class="fa fa-line-chart"></i>Meerjaren absoluut</a>
 				</li>
 			</ul>
 			<ul class="uk-switcher uk-margin">
-				<div>item1</div>
-				<div>item2</div>
-				<div>item3</div>
+				<div class="boxa tab1"></div>
+				<div class="boxa tab2"></div>
+				<div class="boxa tab3"></div>
 			</ul>
+    <!-- /switcher Uikit -->
+		
+	</div>
+		<div class="box b card card-1">
+
+			<!-- switcher Uikit -->
+			<ul uk-tab>
+				<li>
+					<a href="#">BulletChart</a>
+				</li>
+				<li>
+					<a href="#">Meerjaren %</a>
+				</li>
+				<li>
+					<a href="#">Meerjaren absoluut</a>
+				</li>
+			</ul>
+			<ul class="uk-switcher uk-margin">
+				<div class="boxb tab1"></div>
+				<div class="boxb tab2"></div>
+				<div class="boxb tab3"></div>
+			</ul>
+			<!-- /switcher Uikit -->
 
 		</div>
-		<div class="box b card card-1"></div>
 		<div class="box c card card-1">
-			<div id="tabs1">
-				<ul>
-					<li>
-						<a href="#tabs-1">
-							<i class="fa fa-line-chart"></i>
-							<span>Lijn grafiek</span>
-						</a>
-					</li>
-					<li>
-						<a href="#tabs-2">
-							<i class="fa fa-table"></i>
-							<span>Tabel</span>
-						</a>
-					</li>
-				</ul>
-				<div id="tabs-1"></div>
-				<div id="tabs-2"></div>
-			</div>
+
+			<!-- switcher Uikit -->
+			<ul uk-tab>
+				<li>
+					<a href="#">Lijngrafiek</a>
+				</li>
+				<li>
+					<a href="#">Tabel</a>
+				</li>
+			</ul>
+			<ul class="uk-switcher uk-margin">
+				<div class="boxc tab1"></div>
+				<div class="boxc tab2"></div>
+			</ul>
+			<!-- /switcher Uikit -->
+
 		</div>
+
 		<div class="box d card card-1">
-			<div id="tabs2">
-				<ul>
+			
+				<!-- switcher Uikit -->
+				<ul uk-tab>
 					<li>
-						<a href="#tabs-1">
-							<i class="fa fa-line-chart"></i>
-							<span>Lijn grafiek</span>
-						</a>
+						<a href="#">Lijngrafiek</a>
 					</li>
 					<li>
-						<a href="#tabs-2">
-							<i class="fa fa-table"></i>
-							<span>Tabel</span>
-						</a>
+						<a href="#">Tabel</a>
 					</li>
 				</ul>
-				<div id="tabs-1"></div>
-				<div id="tabs-2"></div>
-			</div>
+				<ul class="uk-switcher uk-margin">
+					<div class="boxd tab1"></div>
+					<div class="boxd tab2"></div>
+				</ul>
+				<!-- /switcher Uikit -->
+
 		</div>
 	</div>
 	<div class="footer">Footer
 	</div>
 </div>
+<script>var $j = jQuery.noConflict();</script>
 <script src="src/index.js"></script>
 </body>
 
