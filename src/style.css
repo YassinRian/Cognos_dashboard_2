@@ -52,25 +52,24 @@ grid-column: col 1 / auto;
 
 .box.a {
   grid-area: boxa;
+  padding: 10px;
 }
 
 .box.b {
   grid-area: boxb;
+  padding: 10px;
 }
 
 .box.c {
   grid-area: boxc;
+  padding: 10px;
 }
 
 .box.d {
   grid-area: boxd;
-}
-
-
-.comp {
-  margin: 10px;
   padding: 10px;
 }
+
 
 /* card opmaak */
 .card-1 {
