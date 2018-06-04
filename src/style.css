@@ -119,14 +119,14 @@ grid-column: col 1 / auto;
 .row5 {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  width: 350px;
+  justify-content: flex-end;
+  margin: 20px;
+  border: 1px #1d6b34 solid;
+  padding: 10px;
 }
 
-.row6 {
-  display: flex;
+.prmt_kpl1 {
+  margin-left: 10px;
 }
 
 #PRMT_div {
@@ -312,4 +312,8 @@ iframe {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.uk-accordion-title {
+  font-size: 12px;
 }
