@@ -125,6 +125,11 @@ grid-column: col 1 / auto;
   padding: 10px;
 }
 
+.row41, .row42, .row43 {
+  border-left: 6px solid #1d6b34;
+  padding: 20px;
+}
+
 .prmt_kpl1 {
   margin-left: 10px;
 }
