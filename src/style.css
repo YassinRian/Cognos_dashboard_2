@@ -23,7 +23,7 @@ justify-content: center;
   grid-row: row 2;
   flex-direction: column;
   justify-content: flex-start;
-padding: 20px;
+  padding: 20px;
 }
 
 .sidebar {
