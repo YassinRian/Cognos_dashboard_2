@@ -19,8 +19,12 @@
 <body>
 <!-- componenten -->
 <div class="prmts prmt_jaar">**COMP1**</div>
-<div class="prmts prmt_kostendrager">**COMP2**</div>
-<div class="prmts prmt_kostenplaats">**COMP3**</div>
+<div class="prmts prmt_kdr1">**COMP21**</div>
+<div class="prmts prmt_kdr2">**COMP22**</div>
+<div class="prmts prmt_kdr3">**COMP23**</div>
+<div class="prmts prmt_kpl1">**COMP31**</div>
+<div class="prmts prmt_kpl2">**COMP32**</div>
+<div class="prmts prmt_kpl3">**COMP33*</div>
 <div class="comp comp_bullet_kpl">**COMP4**</div>
 <div class="comp comp_bullet_kdr">**COMP5**</div>
 <div class="comp_lijn_kdr">**COMP6**</div>
@@ -267,7 +271,7 @@
 	<div class="sidebar card-5">
 		<div class="row1">Filters</div>
 		<div class="row2"><button class="button prmt">Ververs geselecteerde filters</button></div>
-		<div class="row">
+		<div class="row"> 
 			<div class="row3">
 				<div class="group">
 					<input id="input_jaar" type="text" required>
@@ -276,32 +280,99 @@
 					<label>Selecteer Jaar</label>
 				</div>
 			</div>
-			<div class="row4">
+<div class="row4">
+<!-- Accordion KPL -->
+<ul uk-accordion>
+	<li class="uk-open">
+		<a class="uk-accordion-title" href="#">Apparaatlasten org. niveau 1</a>
+		<div class="uk-accordion-content">
+			<div class="row41">
 				<div class="group">
-					<input id="input_kpl" type="text" required>
+					<input id="input_jaar" type="text" required>
 					<span class="highlight"></span>
 					<span class="bar"></span>
-					<label>Selecteer Kostenplaats organisatie niveau</label>
-				</div>
-			</div>
-			<div class="row5">
-				<div class="group">
-					<input id="input_kdr" type="text" required>
-					<span class="highlight"></span>
-					<span class="bar"></span>
-					<label>Selecteer Kostendrager organisatie niveau</label>
-				</div>
-			</div>
-			<div class="row6">
-				<div class="group">
-					<input type="text" required>
-					<span class="highlight"></span>
-					<span class="bar"></span>
-					<label>Name</label>
+					<label>Selecteer organisatie niveau</label>
 				</div>
 			</div>
 		</div>
-	</div>
+	</li>
+	<li>
+		<a class="uk-accordion-title" href="#">Apparaatlasten org. niveau 2</a>
+		<div class="uk-accordion-content">
+			<div class="row42">
+				<div class="group">
+					<input id="input_jaar" type="text" required>
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label>Selecteer organisatie niveau</label>
+				</div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<a class="uk-accordion-title" href="#">Apparaatlasten org. niveau 3</a>
+		<div class="uk-accordion-content">
+			<div class="row43">
+				<div class="group">
+					<input id="input_jaar" type="text" required>
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label>Selecteer organisatie niveau</label>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>
+<!-- /Accordion -->
+</div>
+			
+<div class="row5">
+	<!-- Accordion KDR -->
+	<ul uk-accordion>
+		<li class="uk-open">
+			<a class="uk-accordion-title" href="#">Programmalasten org. niveau 1</a>
+			<div class="uk-accordion-content">
+				<div class="row51">
+					<div class="group">
+						<input id="input_jaar" type="text" required>
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label>Selecteer organistatie niveau</label>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<a class="uk-accordion-title" href="#">Programmalasten org. niveau 2</a>
+			<div class="uk-accordion-content">
+				<div class="row52">
+					<div class="group">
+						<input id="input_jaar" type="text" required>
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label>Selecteer organistatie niveau</label>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<a class="uk-accordion-title" href="#">Programmalasten org. niveau 3</a>
+			<div class="uk-accordion-content">
+				<div class="row53">
+					<div class="group">
+						<input id="input_jaar" type="text" required>
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label>Selecteer organistatie niveau</label>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<!-- /Accordion -->
+</div>
+</div>
+</div>
   <!-- /Sidebar -->
 	
 	<!-- Content -->

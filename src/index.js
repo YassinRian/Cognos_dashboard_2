@@ -3,10 +3,16 @@ $j(document).ready(function() {
 
   var toggleFlag = true;
 
+  //filers
   $j(".row3").append($j(".prmt_jaar"));
-  $j(".row4").append($j(".prmt_kostenplaats"));
-  $j(".row5").append($j(".prmt_kostendrager"));
 
+  $j(".row41").append($j(".prmt_kpl1"));
+  $j(".row42").append($j(".prmt_kpl2"));
+  $j(".row43").append($j(".prmt_kpl3"));
+  $j(".row51").append($j(".prmt_kdr1"));
+  $j(".row52").append($j(".prmt_kdr2"));
+  $j(".row53").append($j(".prmt_kdr3"));
+  
   // components
   $j(".boxa.tab1").append($j(".comp_bullet_kpl"));
   $j(".boxa.tab2").append($j(".comp_meerjaren_perc_kpl"));
@@ -33,7 +39,7 @@ $j(document).ready(function() {
 
   if (!sessionStorage['init']) {
 
-    $j('body').prepend("<div class='spinner'><div class ='container'><div class ='item item-1'></div><div class = 'item item-2'></div><div class='item item-3'></div><div class ='item item-4'></div></div></div>");
+    $j('body').prepend("<h1>dit is een test</h1><div class='spinner'><div class ='container'><div class ='item item-1'></div><div class = 'item item-2'></div><div class='item item-3'></div><div class ='item item-4'></div></div></div>");
     $j('body').css('visibility', 'visible')
     $j(".mainViewerTable").css("visibility", "visible");
 
