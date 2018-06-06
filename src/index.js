@@ -39,7 +39,7 @@ $j(document).ready(function() {
 
   if (!sessionStorage['init']) {
 
-    $j('body').prepend("<h1>dit is een test</h1><div class='spinner'><div class ='container'><div class ='item item-1'></div><div class = 'item item-2'></div><div class='item item-3'></div><div class ='item item-4'></div></div></div>");
+    $j('body').prepend("<div class='spinner'><div class ='container'><div class ='item item-1'></div><div class = 'item item-2'></div><div class='item item-3'></div><div class ='item item-4'></div></div></div>");
     $j('body').css('visibility', 'visible')
     $j(".mainViewerTable").css("visibility", "visible");
 
