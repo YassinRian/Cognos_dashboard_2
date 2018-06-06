@@ -16,10 +16,10 @@ $j(document).ready(function () {
 //              **** INIT ****
 
   $j('#input_kpl1').bind('change keyup', function () {
-    var index = 1
+    var index = 0
     delay(function () {
       FilterSelectList('input_kpl1', selectieLijstKPL1);
-      CascadingPrompt(selectieLijstKPL2, selectie_Allewaarden, index);
+      CascadingPrompt(selectieLijstKPL1, selectie_Allewaarden, index);
     }, 500);
 
   });
@@ -62,9 +62,10 @@ var index = 1
   } // function closure
 
 
-  function CascadingPrompt(v_niv1, v_niv_alle, index) {
+  function CascadingPrompt(v_niv1, v_niv2, v_niv_alle, index) {
 
     var niv1 = v_niv1;
+    var niv2 = v_niv2;
     var niv_alle = v_niv_alle;
 
     var x = niv1.map(function () {
@@ -82,7 +83,7 @@ var index = 1
     // deze stap is nodig om alleen de rijen te grijpen die een display op none hebben staan en deze in arr_y te zetten
     var y = niv_alle.map(function () {
       if ($j(this).css('display') !== 'none')
-        return $j(this).val().split('|')[1];
+        return $j(this).val().split('|')[index];
     }).get();
     arr_y.push(y)
 
