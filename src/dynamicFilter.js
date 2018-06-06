@@ -10,13 +10,27 @@ $j(document).ready(function () {
   var selectieLijstKDR3 = $j(".prmt_kdr3").find('select option');
   var selectie_Allewaarden = $j(".allewaarden").find('select option');
 
-//              **** INIT ****
-$j('#input_kpl2').bind('change keyup', function () {
+  var arr_x = [];
+  var arr_y = [];
 
+//              **** INIT ****
+
+  $j('#input_kpl1').bind('change keyup', function () {
+    var index = 1
     delay(function () {
-      FilterSelectList('input_kpl2', selectieLijstKPL2)
+      FilterSelectList('input_kpl1', selectieLijstKPL1);
+      CascadingPrompt(selectieLijstKPL2, selectie_Allewaarden, index);
     }, 500);
-    cascadingLogic(selectieLijstKPL2, selectieLijstKPL3, 'selectie');
+
+  });
+
+
+$j('#input_kpl2').bind('change keyup', function () {
+var index = 1
+    delay(function () {
+      FilterSelectList('input_kpl2', selectieLijstKPL2);
+      CascadingPrompt(selectieLijstKPL2, selectie_Allewaarden, index);
+    }, 500);
 
   });
 
@@ -48,64 +62,42 @@ $j('#input_kpl2').bind('change keyup', function () {
   } // function closure
 
 
-function cascadingLogic (v_niv_alle, v_niv1, v_niv2, v_niv3) {
+  function CascadingPrompt(v_niv1, v_niv_alle, index) {
 
-var niv1 = v_niv1;
-var niv2 = v_niv2;
-var niv3 = v_niv3;
-var niv_alle = v_niv_alle;
+    var niv1 = v_niv1;
+    var niv_alle = v_niv_alle;
 
-var arr_x = [];
-var arr_y = [];
-var 
-  // map functie doet een loop over alle waarden die zichtbaar zijn en pakt de val op
-  var x = niv1.map(function () {
-    if ($j(this).css('display') !== 'none')
-      return $j(this).val() //extract de "value" onderdeel
-  }).get();
+    var x = niv1.map(function () {
+      if ($j(this).css('display') !== 'none')
+        return $j(this).val()
+    }).get();
+    arr_x.push(x)
 
-  var arr_x = []; // declaratie van een lege array
-  arr_x.push(x) // toevoegen van de val waarden in de array
-  //console.log(arr_x[0]); // test 
+    niv_alle.hide().filter(function () {
+      if (arr_x[0].some(x => $j(this).text().indexOf(x) > -1)) { // some geeft een true of fals als er wordt voldaan aan de functie => pasop nieuwe syntax werkt niet in IE11 denk ik
+        return $j(this).text();
+      }
+    }).show();
 
-  // hier komt de filtering van Alle waarden => elke waarde in de array wordt gecheckt met de text uit options_alle 
-  var z = niv_alle.hide().filter(function () {
-    if (arr_x[0].some(x => $j(this).text().indexOf(x) > -1)) { // some geeft een true of fals als er wordt voldaan aan de functie => pasop nieuwe syntax werkt niet in IE11 denk ik
-      return $j(this).text();
-    }
-  }).show();
-  //console.log(z); test
+    // deze stap is nodig om alleen de rijen te grijpen die een display op none hebben staan en deze in arr_y te zetten
+    var y = niv_alle.map(function () {
+      if ($j(this).css('display') !== 'none')
+        return $j(this).val().split('|')[1];
+    }).get();
+    arr_y.push(y)
 
-  // map functie doet een loop over alle waarden uit de PRMT_alle die zichtbaar zijn en pakt de text waarde op en geeft het door aan variable Y
-  var y = niv_alle.map(function () {
-    if ($j(this).css('display') !== 'none')
-      return $j(this).val()
-  }).get();
+    options_niv2.hide().filter(function () {
+      if (arr_y[0].some(x => $(this).val().indexOf(x) > -1)) { // some geeft een true of fals als er wordt voldaan aan de functie => pasop nieuwe syntax werkt niet in IE11 denk ik
+        return $(this).text();
+      }
+    }).show();
 
-  var arr_y = []; // declaratie van een lege array
-  arr_y.push(y) // toevoegen van de val waarden in de array
-  //console.log(arr_y[0]); // test
+    arr_x = [];
+    arr_y = [];
 
-  //map functie loopt over arr_y en split de juiste waarde om deze later door te geven aan Niv2 
-  var T = arr_y[0].map(function (val) { // val is de waarde van de option uit arr_y
-    var split_Waarde = val.split('|');
-    return split_Waarde[1]
-  });
-
-  var arr_A = [];
-  arr_A.push(T);
-
-  // hier komt de filtering van Niv2 waarden => elke waarde (x) in arr_A wordt gecheckt met de text uit Niv2 ( $(this).val() ) option waarde
-  var z = niv2.hide().filter(function () {
-    if (arr_A[0].some(x => $j(this).val().indexOf(x) > -1)) { // some geeft een true of fals als er wordt voldaan aan de functie => pasop nieuwe syntax werkt niet in IE11 denk ik
-      return $j(this).text();
-    }
-  }).show();
+  }
 
 
-
-  
-}
 
 });
 
