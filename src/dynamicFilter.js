@@ -1,14 +1,15 @@
 $j(document).ready(function () {
 
   // ******    variables  ******
-  var selectieLijstKPL1 = $j(".prmt_kpl1").find('select option');
-  var selectieLijstKPL2 = $j(".prmt_kpl2").find('select option');
-  var selectieLijstKPL3 = $j(".prmt_kpl3").find('select option');
+  var selectieLijstKPL1 = $j(".prmt_kpl1 > select").children('option');
+  var selectieLijstKPL2 = $j(".prmt_kpl2 > select").children('option');
+  var selectieLijstKPL3 = $j(".prmt_kpl3 > select").children('option');
 
-  var selectieLijstKDR1 = $j(".prmt_kdr1").find('select option');
-  var selectieLijstKDR2 = $j(".prmt_kdr2").find('select option');
-  var selectieLijstKDR3 = $j(".prmt_kdr3").find('select option');
-  var selectie_Allewaarden = $j(".allewaarden").find('select option');
+  var selectieLijstKDR1 = $j(".prmt_kdr1 > select").children('option');
+  var selectieLijstKDR2 = $j(".prmt_kdr2 > select").children('option');
+  var selectieLijstKDR3 = $j(".prmt_kdr3 > select").children('option');
+  var selectie_Allewaarden_kpl = $j(".allewaarden_kpl > select").children('option');
+  var selectie_Allewaarden_kdr = $j(".allewaarden_kdr > select").children('option');
 
 
 //              **** INIT ****
@@ -24,7 +25,7 @@ $j(".prmt_kpl2").children('select').change(function () {
     var index = 0;
     delay(function () {
       FilterSelectList('input_kpl1', selectieLijstKPL1);
-      CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden, index);
+      CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden_kpl, index);
     }, 500);
 
   });
@@ -34,7 +35,7 @@ $j('#input_kpl2').bind('change keyup', function () {
 var index = 1;
     delay(function () {
       FilterSelectList('input_kpl2', selectieLijstKPL2);
-      CascadingPrompt(selectieLijstKPL2, selectieLijstKPL3, selectie_Allewaarden, index);
+      CascadingPrompt(selectieLijstKPL2, selectieLijstKPL3, selectie_Allewaarden_kpl, index);
     }, 500);
 
   });
