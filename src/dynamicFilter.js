@@ -1,25 +1,18 @@
 $j(document).ready(function () {
 
   // ******    variables  ******
-  var selectieLijstKPL1 = $j(".prmt_kpl1 > select").children('option');
-  var selectieLijstKPL2 = $j(".prmt_kpl2 > select").children('option');
-  var selectieLijstKPL3 = $j(".prmt_kpl3 > select").children('option');
+  var selectieLijstKPL1 = $j(".prmt_kpl1").find("select > option");
+  var selectieLijstKPL2 = $j(".prmt_kpl2").find("select > option");
+  var selectieLijstKPL3 = $j(".prmt_kpl3").find("select > option");
 
-  var selectieLijstKDR1 = $j(".prmt_kdr1 > select").children('option');
-  var selectieLijstKDR2 = $j(".prmt_kdr2 > select").children('option');
-  var selectieLijstKDR3 = $j(".prmt_kdr3 > select").children('option');
-  var selectie_Allewaarden_kpl = $j(".allewaarden_kpl > select").children('option');
-  var selectie_Allewaarden_kdr = $j(".allewaarden_kdr > select").children('option');
+  var selectieLijstKDR1 = $j(".prmt_kdr1").find("select > option");
+  var selectieLijstKDR2 = $j(".prmt_kdr2").find("select > option");
+  var selectieLijstKDR3 = $j(".prmt_kdr3").find("select > option");
+  var selectie_Allewaarden_kpl = $j(".allewaarden_kpl").find("select > option");
+  var selectie_Allewaarden_kdr = $j(".allewaarden_kdr").find("select > option");
 
 
 //              **** INIT ****
-
-$j(".prmt_kpl2").children('select').change(function () {
-  $j('#input_kpl1').val(null);
-  selectieLijstKPL1.prop("selected", false);
-  selectieLijstKPL1.show();
-});
-
 
   $j('#input_kpl1').bind('change keyup', function () {
     var index = 0;
@@ -36,8 +29,10 @@ var index = 1;
     delay(function () {
       FilterSelectList('input_kpl2', selectieLijstKPL2);
       CascadingPrompt(selectieLijstKPL2, selectieLijstKPL3, selectie_Allewaarden_kpl, index);
+      $j('#input_kpl1').val(null);
+      selectieLijstKPL1.prop("selected", false);
+      selectieLijstKPL1.show();
     }, 500);
-
   });
 
 
@@ -53,14 +48,14 @@ var index = 1;
 
   function FilterSelectList(v_input, v_selectielist) {
 
-    var var_input = $j.trim($j("#" + v_input).val().toLowerCase()); // input wordt ingelezen, spaties worden weggehaald en alles wordt naar kleine letters gezet.
+    var var_input = $j.trim($j("#" + v_input).val().replace(/\s+/g, '').toUpperCase()); // input wordt ingelezen, spaties worden weggehaald en alles wordt naar kleine letters gezet.
     var var_selectieList = v_selectielist;
 
     if (var_input.length === 0) { // als input leeg is dan zijn alle regels van niv1 zichtbaar
       var_selectieList.show();
     } else {
       var_selectieList.hide().filter(function () { // filter is een loop die alleen de waarden laat zien op basis van de gegeven criteria (de inwendige fuctie)
-        return $j(this).text().toLowerCase().indexOf(var_input) > -1;
+        return $j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1;
       }).show();
 
     }
