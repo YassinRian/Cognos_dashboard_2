@@ -28,11 +28,10 @@ function FilterSelectList(selectOption, filterId, noteClass, selectTextClass)
 
     options.each(function(){
        var search = $x(this).text().replace(/\u00A0/g,'').toUpperCase();
-       if ( search.indexOf(filter) == -1 )
-     {
-    $x(this).css('display', 'none')
-        res++;
-     }
+       if ( search.indexOf(filter) == -1 ) {
+        $x(this).css('display', 'none')
+        res++;     
+        }
      else
      { 
        if( filter.length === 0 )

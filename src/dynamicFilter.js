@@ -2,6 +2,7 @@ $j(document).ready(function () {
 
   // ******    variables  ******
   var selectieLijstKPL1 = $j(".prmt_kpl1").find("select > option");
+  var kpl1_dropdown = $j(".prmt_kpl1").find("select");
   var selectieLijstKPL2 = $j(".prmt_kpl2").find("select > option");
   var selectieLijstKPL3 = $j(".prmt_kpl3").find("select > option");
 
@@ -10,6 +11,7 @@ $j(document).ready(function () {
   var selectieLijstKDR3 = $j(".prmt_kdr3").find("select > option");
   var selectie_Allewaarden_kpl = $j(".allewaarden_kpl").find("select > option");
   var selectie_Allewaarden_kdr = $j(".allewaarden_kdr").find("select > option");
+  var bucket = " ";
 
 
 //              **** INIT ****
@@ -18,6 +20,7 @@ $j(document).ready(function () {
     var index = 0;
     delay(function () {
       FilterSelectList('input_kpl1', selectieLijstKPL1);
+      console.log(bucket);
       CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden_kpl, index);
     }, 500);
 
@@ -50,15 +53,30 @@ var index = 1;
 
     var var_input = $j.trim($j("#" + v_input).val().replace(/\s+/g, '').toUpperCase()); // input wordt ingelezen, spaties worden weggehaald en alles wordt naar kleine letters gezet.
     var var_selectieList = v_selectielist;
+    bucket = " ";
+    var res = 0;
+    var notetext = $j("." + notetext);
 
     if (var_input.length === 0) { // als input leeg is dan zijn alle regels van niv1 zichtbaar
       var_selectieList.show();
     } else {
       var_selectieList.hide().filter(function () { // filter is een loop die alleen de waarden laat zien op basis van de gegeven criteria (de inwendige fuctie)
+        if ($j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1) {
+          bucket += $j(this).text() + ','
+        }
         return $j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1;
       }).show();
-
     }
+/*
+    if ($j(".prmt_kpl1").find("option").css("display", "none").length === $j(".prmt_kpl1").find("option").length) {
+      kpl1_dropdown.hide()
+      notetext.text("selecteer bestaande waarden")
+    } else {
+      notetext.text("");
+      kpl1_dropdown.show();
+    }
+
+*/
 
   } // function closure
 
