@@ -58,14 +58,14 @@ var index = 1;
     var notetext = $j(".notetext");
 
     if (var_input.length === 0) { // als input leeg is dan zijn alle regels van niv1 zichtbaar
-      var_selectieList.show();
+      var_selectieList.show().prop('selected', false);
     } else {
       var_selectieList.hide().filter(function () { // filter is een loop die alleen de waarden laat zien op basis van de gegeven criteria (de inwendige fuctie)
         if ($j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1) {
           bucket += $j(this).text() + ','
         }
         return $j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1;
-      }).show();
+      }).show().prop('selected', true);
     }
 
 // verbergt dropdown als niet "bestaande waarde" wordt geselecteerd
@@ -77,16 +77,6 @@ var index = 1;
       notetext.css("display","none");
       kpl1_dropdown.show();
     }
-
-/*
- if (bucket === "") {
-   console.log("bucket is leeg")
- } else console.log("bucket is not leeg");
- */
-
-
-
-
 
   } // function closure
 
