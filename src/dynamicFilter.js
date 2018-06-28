@@ -14,7 +14,7 @@ $j(document).ready(function () {
   var bucket = " ";
 
 
-//              **** INIT ****
+//      **** INIT ****   //
 
   $j('#input_kpl1').bind('change keyup', function () {
     var index = 0;
