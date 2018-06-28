@@ -2,7 +2,7 @@ $j(document).ready(function () {
 
   // ******    variables  ******
   var selectieLijstKPL1 = $j(".prmt_kpl1").find("select > option");
-  var kpl1_dropdown = $j(".prmt_kpl1").find("select");
+  var kpl1_dropdown = $j(".prmt_kpl1");
   var selectieLijstKPL2 = $j(".prmt_kpl2").find("select > option");
   var selectieLijstKPL3 = $j(".prmt_kpl3").find("select > option");
 
@@ -53,9 +53,9 @@ var index = 1;
 
     var var_input = $j.trim($j("#" + v_input).val().replace(/\s+/g, '').toUpperCase()); // input wordt ingelezen, spaties worden weggehaald en alles wordt naar kleine letters gezet.
     var var_selectieList = v_selectielist;
-    bucket = " ";
+    bucket = "";
     var res = 0;
-    var notetext = $j("." + notetext);
+    var notetext = $j(".notetext");
 
     if (var_input.length === 0) { // als input leeg is dan zijn alle regels van niv1 zichtbaar
       var_selectieList.show();
@@ -67,16 +67,26 @@ var index = 1;
         return $j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1;
       }).show();
     }
-/*
-    if ($j(".prmt_kpl1").find("option").css("display", "none").length === $j(".prmt_kpl1").find("option").length) {
+
+// verbergt dropdown als niet "bestaande waarde" wordt geselecteerd
+    if (bucket === "" && var_input !== "") {
       kpl1_dropdown.hide()
-      notetext.text("selecteer bestaande waarden")
+      notetext.css("display","block")
+      //notetext.text("Selecteer bestaande waarden")
     } else {
-      notetext.text("");
+      notetext.css("display","none");
       kpl1_dropdown.show();
     }
 
-*/
+/*
+ if (bucket === "") {
+   console.log("bucket is leeg")
+ } else console.log("bucket is not leeg");
+ */
+
+
+
+
 
   } // function closure
 
