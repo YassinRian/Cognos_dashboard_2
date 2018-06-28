@@ -87,9 +87,6 @@ grid-column: col 1 / auto;
 }
 /* einde card opmaak */
 
-
-
-
 .row1 {
   display: flex;
   justify-content: center;
@@ -111,7 +108,7 @@ grid-column: col 1 / auto;
   display: flex;
   flex-direction: column;
   margin: 10px;
-  background-color: white;
+  /* background-color: white; */
 }
 
 .button.prmt {
@@ -196,8 +193,10 @@ body {
   color: #459e00;
 }
 
-.fa {
-  margin-right: 5px;
+.uk-offcanvas-bar {
+  color: red;
+  background: white;
+  width: auto;
 }
 
 /* --------------------------------------- */
