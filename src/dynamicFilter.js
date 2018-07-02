@@ -72,7 +72,7 @@ var index = 1;
     if (bucket === "" && var_input !== "") {
       kpl1_dropdown.hide()
       notetext.css("display","block")
-      //notetext.text("Selecteer bestaande waarden")
+
     } else {
       notetext.css("display","none");
       kpl1_dropdown.show();
