@@ -33,7 +33,7 @@ justify-content: center;
 
 .sidebar {
 grid-column: col 1 / auto;
-  grid-row: row 2 / span 2;
+  grid-row: row 3 / span 2;
   z-index: 3;
   background-color: rgba(29, 107, 52, 0.7);
 }
