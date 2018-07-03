@@ -21,7 +21,12 @@ $j(document).ready(function () {
     var index = 0;
     delay(function () {
       FilterSelectList('input_kpl1', selectieLijstKPL1);
-      $j(".selectie_kpl").html("Kostenplaats Organisatie 1: - " + sessionStorage.getItem('bucketkpl'))
+      if (!sessionStorage['bucketkpl']) {
+        $j(".selectie_kpl").html("");
+      } else {
+        $j(".selectie_kpl").html("Kostenplaats Organisatie 1: - " + sessionStorage.getItem('bucketkpl'))
+      }
+      console.log($j('#input_kpl1').val())
       CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden_kpl, index);
     }, 500);
 

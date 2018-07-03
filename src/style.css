@@ -243,6 +243,7 @@ body {
   color: white;
   font-size: 30px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* styling voor header 2 */
@@ -268,6 +269,7 @@ margin : 0px;
   background-color: #1d6b34;
 }
 
+.uk-navbar-center h2,
 .uk-navbar-nav > li >a {
   color: white;
 }
