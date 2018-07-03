@@ -38,7 +38,7 @@ grid-column: col 1 / auto;
   background-color: rgba(29, 107, 52, 0.7);
 }
 
-.content {
+.content1 {
   display: grid;
   grid-column: col 1 / span 4;
   grid-row: row 4;
@@ -46,6 +46,16 @@ grid-column: col 1 / auto;
   z-index: 1;
   padding: 5px;
   grid-template-areas: "boxa boxa boxb boxb" "boxc boxc boxd boxd";
+}
+
+.content2 {
+  display: grid;
+  grid-column: col 1 / span 4;
+  grid-row: row 4;
+  grid-gap: 10px;
+  z-index: 1;
+  padding: 5px;
+  grid-template-areas: "boxa boxa boxb boxb" "boxc boxc boxc boxc" "boxd boxd boxd boxd";
 }
 
 .footer {
@@ -225,36 +235,30 @@ body {
 
 /* styling voor header 1 */
 .row_header1 {
-  display: flex;
-  flex-direction: row;
-  height: 60px;
+  /* height: 60px; */
+  margin-bottom: 20px;
   }
 
-.logo {
-  flex-grow: 1;
-  background-image: none;
-}
 .logo > img {
   margin: 10px;
 }
 
 .title {
-  flex: 2;
   color: white;
   font-size: 30px;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /* styling voor header 2 */
 
-.row_header2 {
+/* .row_header2 {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   height: 50px;
   padding: 5px;
-}
+} */
 
 .subheader > p {
   margin-left: 10px;

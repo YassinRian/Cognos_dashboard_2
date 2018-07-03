@@ -139,4 +139,12 @@ $j(".pdf").on('click', function () {
  },100)  
 });
 
+
+$j(".tabel").on('click', function () { 
+  $j(".content").removeClass("content1").addClass("content2");
+});
+$j(".lijn").on('click', function () {
+  $j(".content").removeClass("content2").addClass("content1");
+});
+
 });
