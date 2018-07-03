@@ -21,7 +21,7 @@ $j(document).ready(function () {
     var index = 0;
     delay(function () {
       FilterSelectList('input_kpl1', selectieLijstKPL1);
-      $j(".selectie_kpl").html(" - " + bucketkpl)
+      $j(".selectie_kpl").html("Kostenplaats Organisatie 1: - " + sessionStorage.getItem('bucketkpl'))
       CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden_kpl, index);
     }, 500);
 
@@ -32,10 +32,26 @@ $j('#input_kpl2').bind('change keyup', function () {
 var index = 1;
     delay(function () {
       FilterSelectList('input_kpl2', selectieLijstKPL2);
+      $j(".selectie_kpl").html("Kostenplaats Organisatie 2: - " + sessionStorage.getItem('bucketkpl'))
       CascadingPrompt(selectieLijstKPL2, selectieLijstKPL3, selectie_Allewaarden_kpl, index);
       $j('#input_kpl1').val(null);
       selectieLijstKPL1.prop("selected", false);
       selectieLijstKPL1.show();
+    }, 500);
+  });
+
+
+  $j('#input_kpl3').bind('change keyup', function () {
+    var index = 1;
+    delay(function () {
+      FilterSelectList('input_kpl2', selectieLijstKPL2);
+      $j(".selectie_kpl").html("Kostenplaats Organisatie 3: - " + sessionStorage.getItem('bucketkpl'))
+      $j('#input_kpl1').val(null);
+      $j('#input_kpl2').val(null);
+      selectieLijstKPL1.prop("selected", false);
+      selectieLijstKPL2.prop("selected", false);
+      selectieLijstKPL1.show();
+      selectieLijstKPL2.show();
     }, 500);
   });
 
@@ -57,6 +73,7 @@ var index = 1;
     var bucket = [];
     var res = 0;
     var notetext = $j(".notetext");
+    sessionStorage.removeItem('bucketkpl');
 
     if (var_input.length === 0) { // als input leeg is dan zijn alle regels van niv1 zichtbaar
       var_selectieList.show().prop('selected', false);
@@ -64,7 +81,8 @@ var index = 1;
       var_selectieList.hide().filter(function () { // filter is een loop die alleen de waarden laat zien op basis van de gegeven criteria (de inwendige fuctie)
         if ($j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1) {
           bucket.push($j(this).text());
-          bucketkpl = bucket.join(", ");          
+          bucketkpl = bucket.join(", ");
+          sessionStorage.setItem('bucketkpl', bucketkpl);
         }
         return $j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1;
       }).show().prop('selected', true);

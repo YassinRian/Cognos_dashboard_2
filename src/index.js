@@ -29,8 +29,8 @@ $j(document).ready(function() {
   $j(".boxd.tab2").append($j(".comp_tabel_kdr"));
 
 
-  $j('.prmt_jaar').find('option').slice(0, 2).remove();
-  $j('.prmt_kostenplaats').find('option').slice(0, 2).remove(); // aanpassen ..dient geen remove te zijn maar hide denk ik
+  $j('.prmt_jaar').find('option').slice(0, 2).hide();
+  $j('.prmt_kostenplaats').find('option').slice(0, 2).hide(); // aanpassen ..dient geen remove te zijn maar hide denk ik
 
 
   $j('.content, .sidebar, .header, .subheader, .footer').hide();
