@@ -11,7 +11,8 @@ $j(document).ready(function () {
   var selectieLijstKDR3 = $j(".prmt_kdr3").find("select > option");
   var selectie_Allewaarden_kpl = $j(".allewaarden_kpl").find("select > option");
   var selectie_Allewaarden_kdr = $j(".allewaarden_kdr").find("select > option");
-  var bucket = " ";
+  var bucketkpl = [];
+  var bucketkdr = [];
 
 
 //      **** INIT ****   //
@@ -20,7 +21,7 @@ $j(document).ready(function () {
     var index = 0;
     delay(function () {
       FilterSelectList('input_kpl1', selectieLijstKPL1);
-      console.log(bucket);
+      $j(".selectie_kpl").html(" - " + bucketkpl)
       CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden_kpl, index);
     }, 500);
 
@@ -53,7 +54,7 @@ var index = 1;
 
     var var_input = $j.trim($j("#" + v_input).val().replace(/\s+/g, '').toUpperCase()); // input wordt ingelezen, spaties worden weggehaald en alles wordt naar kleine letters gezet.
     var var_selectieList = v_selectielist;
-    bucket = "";
+    var bucket = [];
     var res = 0;
     var notetext = $j(".notetext");
 
@@ -62,7 +63,8 @@ var index = 1;
     } else {
       var_selectieList.hide().filter(function () { // filter is een loop die alleen de waarden laat zien op basis van de gegeven criteria (de inwendige fuctie)
         if ($j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1) {
-          bucket += $j(this).text() + ','
+          bucket.push($j(this).text());
+          bucketkpl = bucket.join(", ");          
         }
         return $j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1;
       }).show().prop('selected', true);
