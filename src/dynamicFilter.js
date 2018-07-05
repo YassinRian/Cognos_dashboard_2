@@ -1,6 +1,7 @@
 $j(document).ready(function () {
 
   // ******    variables  ******
+  var selectieLijstJaar = $j(".prmt_jaar").find("select > option");
   var selectieLijstKPL1 = $j(".prmt_kpl1").find("select > option");
   var selectieLijstKPL2 = $j(".prmt_kpl2").find("select > option");
   var selectieLijstKPL3 = $j(".prmt_kpl3").find("select > option");
@@ -21,8 +22,21 @@ $j(document).ready(function () {
 
 //      **** INIT ****   //
 
+
+  $j('#input_jaar').bind('change keyup', function () {
+    delay(function () {
+      sessionStorage.removeItem('bucketJaar');
+      FilterSelectList('input_jaar', selectieLijstJaar, 'Jaar', 'prmt_jaar');
+      if (!sessionStorage['bucketJaar']) {
+        $j(".selectie_jaar").html("");
+      } else {
+        $j(".selectie_jaar").html("Jaar: - " + sessionStorage.getItem('bucketJaar'))
+      }
+    }, 500);
+
+  });
+
   $j('#input_kpl1').bind('change keyup', function () {
-    var index = 0;
     delay(function () {
       sessionStorage.removeItem('bucketkpl');
       FilterSelectList('input_kpl1', selectieLijstKPL1, 'KPL', 'prmt_kpl1');
@@ -31,19 +45,18 @@ $j(document).ready(function () {
       } else {
         $j(".selectie_kpl").html("Kostenplaats Organisatie 1: - " + sessionStorage.getItem('bucketkpl'))
       }
-      CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden_kpl, index);
+      CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden_kpl);
     }, 500);
 
   });
 
 
 $j('#input_kpl2').bind('change keyup', function () {
-var index = 1;
     delay(function () {
       sessionStorage.removeItem('bucketkpl');
       FilterSelectList('input_kpl2', selectieLijstKPL2, 'KPL');
       $j(".selectie_kpl").html("Kostenplaats Organisatie 2: - " + sessionStorage.getItem('bucketkpl'))
-      CascadingPrompt(selectieLijstKPL2, selectieLijstKPL3, selectie_Allewaarden_kpl, index);
+      CascadingPrompt(selectieLijstKPL2, selectieLijstKPL3, selectie_Allewaarden_kpl);
       $j('#input_kpl1').val(null);
       selectieLijstKPL1.prop("selected", false).show();
     }, 500);
@@ -51,7 +64,6 @@ var index = 1;
 
 
   $j('#input_kpl3').bind('change keyup', function () {
-    var index = 1;
     delay(function () {
       sessionStorage.removeItem('bucketkpl');
       FilterSelectList('input_kpl2', selectieLijstKPL2);
@@ -65,7 +77,6 @@ var index = 1;
 
 
     $j('#input_kdr1').bind('change keyup', function () {
-      var index = 0;
       delay(function () {
         sessionStorage.removeItem('bucketkdr');
         FilterSelectList('input_kdr1', selectieLijstKDR1);
@@ -74,19 +85,18 @@ var index = 1;
         } else {
           $j(".selectie_kdr").html("Kostendrager Organisatie 1: - " + sessionStorage.getItem('bucketkdr'))
         }
-        CascadingPrompt(selectieLijstKDR1, selectieLijstKDR2, selectie_Allewaarden_kdr, index);
+        CascadingPrompt(selectieLijstKDR1, selectieLijstKDR2, selectie_Allewaarden_kdr);
       }, 500);
 
     });
 
 
     $j('#input_kdr2').bind('change keyup', function () {
-      var index = 1;
       delay(function () {
         sessionStorage.removeItem('bucketkdr');
         FilterSelectList('input_kdr2', selectieLijstKDR2);
         $j(".selectie_kdr").html("Kostendrager Organisatie 2: - " + sessionStorage.getItem('bucketkdr'))
-        CascadingPrompt(selectieLijstKDR2, selectieLijstKDR3, selectie_Allewaarden_kdr, index);
+        CascadingPrompt(selectieLijstKDR2, selectieLijstKDR3, selectie_Allewaarden_kdr);
         $j('#input_kdr1').val(null);
         selectieLijstKDR1.prop("selected", false).show();
       }, 500);
@@ -94,7 +104,6 @@ var index = 1;
 
 
     $j('#input_kdr3').bind('change keyup', function () {
-      var index = 1;
       delay(function () {
         sessionStorage.removeItem('bucketkdr');
         FilterSelectList('input_kdr2', selectieLijstKDR2);
@@ -125,9 +134,8 @@ var index = 1;
     var var_selectieList = v_selectielist;
     var var_prompt = $j("." + v_prompt);
     var bucket = [];
-    var res = 0;
-    var notetext = $j(".notetext");
-    var typePrmt = v_type
+    var notetext = $j(".notetext" + v_type);
+    var typePrmt = v_type;
 
     if (var_input.length === 0) { // als input leeg is dan zijn alle regels van niv1 zichtbaar
       var_selectieList.show().prop('selected', false);
@@ -173,7 +181,7 @@ var index = 1;
   } // function closure
 
 
-  function CascadingPrompt(v_niv1, v_niv2, v_niv_alle, index) {
+  function CascadingPrompt(v_niv1, v_niv2, v_niv_alle) {
 
     var niv1 = v_niv1;
     var niv2 = v_niv2;
@@ -208,8 +216,6 @@ var index = 1;
       return split_Waarde[1]
     });
     arr_A.push(T);
-
-    console.log(arr_A);
 
     niv2.hide().filter(function () {
       if (arr_A[0].some(x => $j(this).val().indexOf(x) > -1)) { // some geeft een true of fals als er wordt voldaan aan de functie => pasop nieuwe syntax werkt niet in IE11 denk ik
