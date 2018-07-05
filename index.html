@@ -192,7 +192,7 @@
 
 <!-- Wrapper -->
 <div class="wrapper">
-	<div class="header1">
+	<div class="header1 card card-1">
 		<nav class="row_header1 uk-navbar-container" uk-navbar>
 			<div class="logo1 uk-navbar-left">
 				<img tabIndex=0 class=image src="https://werknet.denhaag.nl/style%20library/Branding/components/gdh_suitebar/images/gdh_logo.png">
@@ -267,8 +267,13 @@
 	<div class="sidebar card-5">
 		<div class="row1">Filters</div>
 		<div class="row2"><button class="button prmt">Ververs geselecteerde filters</button></div>
-		<div class="row"> 
+		<div class="row">
 			<div class="row3">
+				<div class="notetext" style="display:none">
+					<div class="uk-alert-danger" uk-alert>
+					  <p>Selecteer een bestaande waarde.</p>
+					</div>
+				</div>
 				<div class="group">
 					<input id="input_jaar" type="text" required>
 					<span class="highlight"></span>
@@ -283,11 +288,10 @@
 		<a class="uk-accordion-title" href="#">Apparaatlasten org. niveau 1</a>
 		<div class="uk-accordion-content">
 			<div class="notetext" style="display:none">
-			<div class="uk-alert-danger" uk-alert>
+				<div class="uk-alert-danger" uk-alert>
 				<p>Selecteer een bestaande waarde.</p>
 			</div>
 			</div>
-			<!-- <h4 class="notetext" style="color:red;"></h4> -->
 			<div class="row41">
 				<div class="group">
 					<input id="input_kpl1" type="text" required>
@@ -301,6 +305,11 @@
 	<li>
 		<a class="uk-accordion-title" href="#">Apparaatlasten org. niveau 2</a>
 		<div class="uk-accordion-content">
+			<div class="notetext" style="display:none">
+					<div class="uk-alert-danger" uk-alert>
+						<p>Selecteer een bestaande waarde.</p>
+					</div>
+			</div>
 			<div class="row42">
 				<div class="group">
 					<input id="input_kpl2" type="text" required>

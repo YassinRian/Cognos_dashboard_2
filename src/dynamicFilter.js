@@ -2,7 +2,6 @@ $j(document).ready(function () {
 
   // ******    variables  ******
   var selectieLijstKPL1 = $j(".prmt_kpl1").find("select > option");
-  var kpl1_dropdown = $j(".prmt_kpl1");
   var selectieLijstKPL2 = $j(".prmt_kpl2").find("select > option");
   var selectieLijstKPL3 = $j(".prmt_kpl3").find("select > option");
 
@@ -11,8 +10,13 @@ $j(document).ready(function () {
   var selectieLijstKDR3 = $j(".prmt_kdr3").find("select > option");
   var selectie_Allewaarden_kpl = $j(".allewaarden_kpl").find("select > option");
   var selectie_Allewaarden_kdr = $j(".allewaarden_kdr").find("select > option");
-  var bucketkpl = [];
-  var bucketkdr = [];
+
+  var arrObj = {
+    bucketKPL : [],
+    bucketKDR : [],
+    bucketJaar : []
+}
+
 
 
 //      **** INIT ****   //
@@ -20,13 +24,13 @@ $j(document).ready(function () {
   $j('#input_kpl1').bind('change keyup', function () {
     var index = 0;
     delay(function () {
-      FilterSelectList('input_kpl1', selectieLijstKPL1);
+      sessionStorage.removeItem('bucketkpl');
+      FilterSelectList('input_kpl1', selectieLijstKPL1, 'KPL', 'prmt_kpl1');
       if (!sessionStorage['bucketkpl']) {
         $j(".selectie_kpl").html("");
       } else {
         $j(".selectie_kpl").html("Kostenplaats Organisatie 1: - " + sessionStorage.getItem('bucketkpl'))
       }
-      console.log($j('#input_kpl1').val())
       CascadingPrompt(selectieLijstKPL1, selectieLijstKPL2, selectie_Allewaarden_kpl, index);
     }, 500);
 
@@ -36,12 +40,12 @@ $j(document).ready(function () {
 $j('#input_kpl2').bind('change keyup', function () {
 var index = 1;
     delay(function () {
-      FilterSelectList('input_kpl2', selectieLijstKPL2);
+      sessionStorage.removeItem('bucketkpl');
+      FilterSelectList('input_kpl2', selectieLijstKPL2, 'KPL');
       $j(".selectie_kpl").html("Kostenplaats Organisatie 2: - " + sessionStorage.getItem('bucketkpl'))
       CascadingPrompt(selectieLijstKPL2, selectieLijstKPL3, selectie_Allewaarden_kpl, index);
       $j('#input_kpl1').val(null);
-      selectieLijstKPL1.prop("selected", false);
-      selectieLijstKPL1.show();
+      selectieLijstKPL1.prop("selected", false).show();
     }, 500);
   });
 
@@ -49,16 +53,60 @@ var index = 1;
   $j('#input_kpl3').bind('change keyup', function () {
     var index = 1;
     delay(function () {
+      sessionStorage.removeItem('bucketkpl');
       FilterSelectList('input_kpl2', selectieLijstKPL2);
       $j(".selectie_kpl").html("Kostenplaats Organisatie 3: - " + sessionStorage.getItem('bucketkpl'))
       $j('#input_kpl1').val(null);
       $j('#input_kpl2').val(null);
-      selectieLijstKPL1.prop("selected", false);
-      selectieLijstKPL2.prop("selected", false);
-      selectieLijstKPL1.show();
-      selectieLijstKPL2.show();
+      selectieLijstKPL1.prop("selected", false).show();
+      selectieLijstKPL2.prop("selected", false).show();
     }, 500);
   });
+
+
+    $j('#input_kdr1').bind('change keyup', function () {
+      var index = 0;
+      delay(function () {
+        sessionStorage.removeItem('bucketkdr');
+        FilterSelectList('input_kdr1', selectieLijstKDR1);
+        if (!sessionStorage['bucketkdr']) {
+          $j(".selectie_kdr").html("");
+        } else {
+          $j(".selectie_kdr").html("Kostendrager Organisatie 1: - " + sessionStorage.getItem('bucketkdr'))
+        }
+        CascadingPrompt(selectieLijstKDR1, selectieLijstKDR2, selectie_Allewaarden_kdr, index);
+      }, 500);
+
+    });
+
+
+    $j('#input_kdr2').bind('change keyup', function () {
+      var index = 1;
+      delay(function () {
+        sessionStorage.removeItem('bucketkdr');
+        FilterSelectList('input_kdr2', selectieLijstKDR2);
+        $j(".selectie_kdr").html("Kostendrager Organisatie 2: - " + sessionStorage.getItem('bucketkdr'))
+        CascadingPrompt(selectieLijstKDR2, selectieLijstKDR3, selectie_Allewaarden_kdr, index);
+        $j('#input_kdr1').val(null);
+        selectieLijstKDR1.prop("selected", false).show();
+      }, 500);
+    });
+
+
+    $j('#input_kdr3').bind('change keyup', function () {
+      var index = 1;
+      delay(function () {
+        sessionStorage.removeItem('bucketkdr');
+        FilterSelectList('input_kdr2', selectieLijstKDR2);
+        $j(".selectie_kdr").html("Kostendrager Organisatie 3: - " + sessionStorage.getItem('bucketkdr'))
+        $j('#input_kdr1').val(null);
+        $j('#input_kdr2').val(null);
+        selectieLijstKDR1.prop("selected", false).show();
+        selectieLijstKDR2.prop("selected", false).show();
+      }, 500);
+    });
+
+
 
 
 //             *****  functies  ******
@@ -71,36 +119,55 @@ var index = 1;
   })();
 
 
-  function FilterSelectList(v_input, v_selectielist) {
+  function FilterSelectList(v_input, v_selectielist, v_type, v_prompt) {
 
     var var_input = $j.trim($j("#" + v_input).val().replace(/\s+/g, '').toUpperCase()); // input wordt ingelezen, spaties worden weggehaald en alles wordt naar kleine letters gezet.
     var var_selectieList = v_selectielist;
+    var var_prompt = $j("." + v_prompt);
     var bucket = [];
     var res = 0;
     var notetext = $j(".notetext");
-    sessionStorage.removeItem('bucketkpl');
+    var typePrmt = v_type
 
     if (var_input.length === 0) { // als input leeg is dan zijn alle regels van niv1 zichtbaar
       var_selectieList.show().prop('selected', false);
     } else {
       var_selectieList.hide().filter(function () { // filter is een loop die alleen de waarden laat zien op basis van de gegeven criteria (de inwendige fuctie)
-        if ($j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1) {
-          bucket.push($j(this).text());
-          bucketkpl = bucket.join(", ");
-          sessionStorage.setItem('bucketkpl', bucketkpl);
+        switch (typePrmt) {
+          case 'KPL':
+             if ($j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1) {
+                    bucket.push($j(this).text());
+                    arrObj.bucketKPL = bucket.join(", ");
+                    sessionStorage.setItem('bucketkpl', arrObj.bucketKPL);
+                  }            
+            break;
+          case 'KDR':
+            if ($j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1) {
+              bucket.push($j(this).text());
+              arrObj.bucketKDR = bucket.join(", ");
+              sessionStorage.setItem('bucketkdr', arrObj.bucketKDR);
+            }
+            break;
+          case 'Jaar':
+            if ($j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1) {
+              bucket.push($j(this).text());
+              arrObj.bucketJaar = bucket.join(", ");
+              sessionStorage.setItem('bucketJaar', arrObj.bucketJaar);
+              break;
         }
+      }
         return $j(this).text().replace(/\u00A0/g, '').toUpperCase().indexOf(var_input) > -1;
       }).show().prop('selected', true);
     }
+    
 
 // verbergt dropdown als niet "bestaande waarde" wordt geselecteerd
-    if (bucket === "" && var_input !== "") {
-      kpl1_dropdown.hide()
+    if (bucket.length === 0 && var_input !== "") {
+      var_prompt.hide()
       notetext.css("display","block")
-      //notetext.text("Selecteer bestaande waarden")
     } else {
       notetext.css("display","none");
-      kpl1_dropdown.show();
+      var_prompt.show();
     }
 
   } // function closure
