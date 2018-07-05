@@ -133,6 +133,7 @@ $j(document).ready(function() {
 
 /// einde oproepen van Iframe
 
+/// 
 $j(".pdf").on('click', function () {
  setTimeout(function () {  
    window.print();
@@ -140,11 +141,11 @@ $j(".pdf").on('click', function () {
 });
 
 
-$j(".tabel").on('click', function () { 
-  $j(".content").removeClass("content1").addClass("content2");
-});
+$j(".tabel").on('click', function () {
+    $j(".content").removeClass("content1").addClass("content2");
+  });
 $j(".lijn").on('click', function () {
-  $j(".content").removeClass("content2").addClass("content1");
+    $j(".content").removeClass("content2").addClass("content1");
 });
 
 });
