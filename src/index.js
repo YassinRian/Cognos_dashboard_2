@@ -68,7 +68,7 @@ $j(document).ready(function() {
   /// begin - sidebar functie
 
     // button voor sidebar
-  $j(".button.sb").click(function (event) {
+  $j(".buttonsb").click(function (event) {
     event.preventDefault();
 
     $j(".sidebar").animate({

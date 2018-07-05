@@ -66,7 +66,7 @@ $j('#input_kpl2').bind('change keyup', function () {
   $j('#input_kpl3').bind('change keyup', function () {
     delay(function () {
       sessionStorage.removeItem('bucketkpl');
-      FilterSelectList('input_kpl2', selectieLijstKPL2);
+      FilterSelectList('input_kpl3', selectieLijstKPL3);
       $j(".selectie_kpl").html("Kostenplaats Organisatie 3: - " + sessionStorage.getItem('bucketkpl'))
       $j('#input_kpl1').val(null);
       $j('#input_kpl2').val(null);
@@ -106,7 +106,7 @@ $j('#input_kpl2').bind('change keyup', function () {
     $j('#input_kdr3').bind('change keyup', function () {
       delay(function () {
         sessionStorage.removeItem('bucketkdr');
-        FilterSelectList('input_kdr2', selectieLijstKDR2);
+        FilterSelectList('input_kdr3', selectieLijstKDR3);
         $j(".selectie_kdr").html("Kostendrager Organisatie 3: - " + sessionStorage.getItem('bucketkdr'))
         $j('#input_kdr1').val(null);
         $j('#input_kdr2').val(null);
