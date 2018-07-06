@@ -11,9 +11,10 @@ $j(document).ready(function() {
   $j(".row51").append($j(".prmt_kdr1"));
   $j(".row52").append($j(".prmt_kdr2"));
   $j(".row53").append($j(".prmt_kdr3"));
+
   // kleine opmaak prompts
   $j('.prmt_jaar').find('option').slice(0, 2).hide();
-  $j('.prmt_kostenplaats').find('option').slice(0, 2).hide(); // aanpassen ..dient geen remove te zijn maar hide denk ik
+
 
    /// einde - filters functies
   
@@ -28,6 +29,19 @@ $j(document).ready(function() {
   $j(".boxc.tab2").append($j(".comp_tabel_kpl"));
   $j(".boxd.tab1").append($j(".comp_lijn_kdr"));
   $j(".boxd.tab2").append($j(".comp_tabel_kdr"));
+
+// voor baten  
+/*
+    $j(".box.a").append($j(".comp_meerjaren_abs_kpl"));
+    $j(".box.b").append($j(".comp_meerjaren_abs_kdr"));
+
+    $j(".boxc.tab1").append($j(".comp_lijn_kpl"));
+    $j(".boxc.tab2").append($j(".comp_tabel_kpl"));
+
+    $j(".boxd.tab1").append($j(".comp_lijn_kdr"));
+    $j(".boxd.tab2").append($j(".comp_tabel_kdr"));
+
+*/    
 
   /// einde - componenten functies
 
